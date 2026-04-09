@@ -2,8 +2,8 @@ name: Monitor Upstream Updates
 
 on:
   schedule:
-    - cron: '0 0 */3 * *' # Запуск каждые 3 дня в 00:00 UTC
-  workflow_dispatch: # Позволяет запускать вручную из интерфейса GitHub
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
 
 jobs:
   check-updates:
@@ -21,7 +21,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Список репозиториев для мониторинга
           REPOS=(
             "blackmatrix7/ios_rule_script"
             "DivineEngine/Profiles"
@@ -31,7 +30,6 @@ jobs:
             "Jeff2Ma/Shadowrocket-Conf-Rules"
           )
 
-          # Читаем дату последней проверки из файла (или ставим старую дату, если файла нет)
           if [ -f .last_check ]; then
             LAST_CHECK=$(cat .last_check)
           else
@@ -44,22 +42,34 @@ jobs:
           echo "Checking updates since $LAST_CHECK..."
 
           for repo in "${REPOS[@]}"; do
-            echo "Checking $repo..."
-            LATEST_COMMIT_DATE=$(gh api repos/$repo/commits/main --template '{{.commit.author.date}}' 2>/dev/null || gh api repos/$repo/commits/master --template '{{.commit.author.date}}' 2>/dev/null)
+            echo "Processing $repo..."
+            # Определяем дефолтную ветку динамически
+            DEFAULT_BRANCH=$(gh api repos/$repo --template '{{.default_branch}}' || echo "main")
             
+            # Получаем дату последнего коммита в этой ветке
+            LATEST_COMMIT_DATE=$(gh api repos/$repo/commits/$DEFAULT_BRANCH --template '{{.commit.author.date}}' 2>/dev/null || echo "")
+            
+            if [[ -z "$LATEST_COMMIT_DATE" ]]; then
+              echo "Warning: Could not get commit date for $repo"
+              continue
+            fi
+
             if [[ "$LATEST_COMMIT_DATE" > "$LAST_CHECK" ]]; then
+              echo "Update found for $repo: $LATEST_COMMIT_DATE"
               UPDATES="$UPDATES\n- [$repo](https://github.com/$repo) (Updated: $LATEST_COMMIT_DATE)"
             fi
           done
 
           if [ -n "$UPDATES" ]; then
             echo "updates_found=true" >> $GITHUB_OUTPUT
-            echo -e "REPORT_BODY=Найдено обновление в следующих репозиториях:$UPDATES" >> $GITHUB_ENV
+            # Оборачиваем в кавычки для безопасности
+            echo "REPORT_BODY<<EOF" >> $GITHUB_ENV
+            echo -e "Найдено обновление в следующих репозиториях:$UPDATES" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
           else
             echo "updates_found=false" >> $GITHUB_OUTPUT
           fi
 
-          # Сохраняем новую дату проверки
           echo "$NEW_CHECK_DATE" > .last_check
 
       - name: Create GitHub Issue
@@ -77,6 +87,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .last_check
+          git add .last_check || true
           git commit -m "Update last check timestamp" || echo "No changes to commit"
-          git push origin main
+          git push origin main || echo "Failed to push state"
