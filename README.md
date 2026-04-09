@@ -33,14 +33,15 @@
 
 ## Структура репозитория
 
-- `/MacOS/sr_ru_basic.conf` — ULTRA-версия для macOS.
-- `/iOS/sr_ru_basic.conf` — ULTRA-версия для iPhone/iPad.
+- `/MacOS/macos_ultra.conf` — ULTRA-версия для macOS.
+- `/iOS/ios_ultra.conf` — ULTRA-версия для iPhone/iPad.
 
 ## Как установить
 
 1. Скопируйте ссылку на RAW-файл нужного конфига.
 2. В Shadowrocket: **Config** -> **«+»** -> **Download from URL**.
-3. Установите **Global Routing** в режим **Config**.
+3. Вставьте ссылку на RAW-файл (например, `.../MacOS/macos_ultra.conf`).
+4. Установите **Global Routing** в режим **Config**.
 4. (Опционально) Для работы URL Rewrite установите и включите CA-сертификат в разделе **HTTPS Decryption**.
 
 ---
