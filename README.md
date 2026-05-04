@@ -60,6 +60,9 @@
 
 | Дата | Изменения |
 |---|---|
+| 2026-05-04 | ✅ Telegram CIDR Fix (5.28.192.0/18) |
+| 2026-05-04 | ✅ DNS-over-QUIC / DoH optimizations |
+| 2026-05-04 | ✅ Repack.me / Eax.me rules added |
 | 2026-04-18 | ✅ 2GIS Route DIRECT (maps/geo fix) |
 | 2026-04-17 | ✅ Yandex Go DIRECT fix (ios + macos) |
 | 2026-04-17 | ✅ Discord → полный RULE-SET (30+ доменов) |
