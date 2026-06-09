@@ -25,10 +25,18 @@ jobs:
             "blackmatrix7/ios_rule_script"
             "misha-tgshv/shadowrocket-configuration-file"
             "Johnshall/Shadowrocket-ADBlock-Rules-Forever"
-            "Jeff2Ma/Shadowrocket-Conf-Rules"
+            "itdoginfo/allow-domains"
+            "runetfreedom/russia-v2ray-rules-dat"
+            "Master-Yoba/shadowrocket-rules"
+            "1andrevich/Re-filter-lists"
+            "hydraponique/roscomvpn-routing"
+            "nncat01/RCVPN-SR"
+            "nncat01/sr-conf-ru"
+            "toneywhitez/zkeen_rules"
+            "HybridNetworks/whatsapp-cidr"
+            "iab0x00/ProxyRules"
             "v2fly/domain-list-community"
             "Loyalsoldier/v2ray-rules-dat"
-            "h2y/Shadowrocket-ADBlock-Rules-Wiki"
           )
 
           if [ -f .last_check ]; then

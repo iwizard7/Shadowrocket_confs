@@ -13,7 +13,13 @@
 - Заменено 3 ручных правила на полный `RULE-SET` из blackmatrix7 (30+ доменов). Голосовые каналы, CDN, стриминг — всё работает стабильно.
 
 ### 📱 WhatsApp & Instagram — Звонки
-- Добавлены IP-диапазоны WhatsApp (CIDR) и Meta IP для стабильных голосовых и видеозвонков через прокси.
+- Добавлены IP-диапазоны WhatsApp (CIDR), доменный RULE-SET Whatsapp и Meta IP для стабильных голосовых и видеозвонков через прокси.
+
+### 🇷🇺 Russia Stack 2026
+- Интеграция **roscomvpn** (RCVPN-SR): geoblock-ru, GitHub, Gemini/DeepMind.
+- **runetfreedom** / **Master-Yoba**: antifilter-community, Telegram IP.
+- **misha antifilter** + RU TLD/ASN (`.ru`, `.рф`, Yandex AS).
+- **Apple Push** через PROXY для стабильных push-уведомлений.
 
 ### 🏦 Банковские приложения
 - Встроенный список российских банковских доменов (Сбер, ВТБ, Тинькофф и др.) идёт напрямую (`DIRECT`), чтобы банковские приложения не блокировали вход при включённом VPN.
@@ -60,6 +66,12 @@
 
 | Дата | Изменения |
 |---|---|
+| 2026-06-09 | ✅ Russia Stack: roscomvpn, runetfreedom, antifilter, geoblock-ru |
+| 2026-06-09 | ✅ Apple Push PROXY, GitHub/DeepMind, win-spy REJECT, RU TLD/ASN |
+| 2026-06-09 | ✅ useful_links расширен (12+ новых RU-репозиториев) |
+| 2026-06-09 | ✅ iOS синхронизирован с macOS (iCloud, Telegram IPv6, Antigravity) |
+| 2026-06-09 | ✅ YouTube supplement, Whatsapp domains, geo-detect RULE-SET |
+| 2026-06-09 | ✅ useful_links + CI: itdoginfo/allow-domains, убраны мёртвые репо |
 | 2026-05-04 | ✅ Telegram CIDR Fix (5.28.192.0/18) |
 | 2026-05-04 | ✅ DNS-over-QUIC / DoH optimizations |
 | 2026-05-04 | ✅ Repack.me / Eax.me rules added |
