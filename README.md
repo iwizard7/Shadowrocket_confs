@@ -33,7 +33,7 @@
 ### 🚀 Технологический стек
 - **[Host] Mapping**: Высокоскоростной маппинг доменов для мгновенного доступа.
 - **[URL Rewrite]**: Автоматические редиректы с заблокированных локальных версий сайтов на глобальные.
-- **Proxy Groups**: Автоматический выбор быстрейшего сервера по категориям (AI, YouTube, Gaming, AUTO).
+- **Proxy Groups**: Правила привязаны к группам AI-Group, YouTube-Group, Gaming-Group и AUTO (url-test по задержке).
 
 ## Базовые возможности
 
@@ -66,6 +66,9 @@
 
 | Дата | Изменения |
 |---|---|
+| 2026-06-09 | ✅ Fix: Apple Push порядок, RU TLD в конец, Proxy Groups активны |
+| 2026-06-09 | ✅ Dedup: GitHub/Telegram IP, объединён блок Apple |
+| 2026-06-09 | ✅ iOS: udp-timeout, dns-exclude; macOS: mDNS в tun-routes |
 | 2026-06-09 | ✅ Russia Stack: roscomvpn, runetfreedom, antifilter, geoblock-ru |
 | 2026-06-09 | ✅ Apple Push PROXY, GitHub/DeepMind, win-spy REJECT, RU TLD/ASN |
 | 2026-06-09 | ✅ useful_links расширен (12+ новых RU-репозиториев) |
