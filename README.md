@@ -66,6 +66,7 @@
 
 | Дата | Изменения |
 |---|---|
+| 2026-08-20 | ✅ Feature: Интеграция улучшений (YouTube IPs, Meta/Facebook, Spotify RULE-SET, Riot/Steam/Epic lists, Torrent block, Twitch-ads) |
 | 2026-06-10 | ✅ Fix: Трафик YouTube и Spotify перенаправлен в AUTO во избежание DIRECT-фоллбека при отсутствии YouTube-серверов в списке |
 | 2026-06-09 | ✅ Fix: Трафик AI (OpenAI, Claude и др.) перенаправлен в AUTO во избежание DIRECT-фоллбека при отсутствии AI-серверов в списке |
 | 2026-06-09 | ✅ Fix: Apple Push порядок, RU TLD в конец, Proxy Groups активны |
