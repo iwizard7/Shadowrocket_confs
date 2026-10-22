@@ -8,7 +8,6 @@
 - `MacOS/macos_ultra.conf` — конфиг для macOS
 - `README.md` — описание и таблица Changelog (на русском)
 - `useful_links.txt` — локальная база знаний, **в .gitignore** (не коммитится, в upstream отсутствует)
-- `.github/workflows/check_updates.yml` — CI мониторинга обновлений upstream-репозиториев
 - `.kilo/` — worktree другого инструмента, не трогать
 
 ## Правила изменения конфигов
@@ -26,12 +25,7 @@
 
 ## CI
 
-`.github/workflows/check_updates.yml` — cron каждые 3 дня + `workflow_dispatch`. Он:
-- проверяет upstream-репозитории из списка `REPOS` в самом workflow (новые источники правил добавлять и туда);
-- создаёт GitHub Issue при найденных обновлениях;
-- коммитит `.last_check` сообщением `Update last check timestamp` и пушит в `main`.
-
-Автокоммиты «Update last check timestamp» — норма, не удалять `.last_check`. Ручной запуск: `gh workflow run check_updates.yml`.
+CI отключён (workflow мониторинга upstream удалён 2026-10-22). Файл `.last_check` остался от него — легаси, безвреден, можно не трогать.
 
 ## Проверка изменений
 
